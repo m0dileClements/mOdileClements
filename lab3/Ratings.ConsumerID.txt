@@ -1,0 +1,62 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           _ Ratings.ConsumerID
+Parent Table:         _ Ratings
+Alias(es):            _ 
+Specification Type:
+  Unique:  _ 
+  Generic: _ 
+  Replica: _ X
+Source Specification: _ Consumer.ConsumerID 
+Shared By:            _ 
+Description:          _ This field references the unique ConsumerID primary key established in the Consumer Table. 
+                        In this table, the field acts as a foreign key to link the two tables. 
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            _  Integer
+Length:               _ 1
+Decimal Places:       _  NONE
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      _ X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _ 
+               Foreign:    _ X
+               Alternate:  _ 
+
+Key Structure: Simple:     _ X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   _ X
+
+Values Entered By: User:   _ X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    _ X
+
+Range of Values:   _ The sample tables only have integer values 1-4, but in integer table can store values 
+                      up to 2,147,438,647. 
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   _ X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _  
