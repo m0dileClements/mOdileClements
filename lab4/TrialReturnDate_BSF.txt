@@ -1,0 +1,57 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement: While in the trial period for a rug, the rug must be in the inventory and 
+the return date must be after the rug was acquired and the trial period began. 
+
+Constraint: The value entered into trial_return_date must be between the Rug(date_aquired) and trial_start_date values. 
+
+Type:     Database Oriented:     _ 
+          Application Oriented   _ X
+
+Category: Field Specific:        _ X
+          Relationship Specific: _ 
+
+Test On:  Insert:                _ X
+          Delete:                _ 
+          Update:                _ 
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ Trial_Returns(trial_return_date)
+
+Table Names: _ Trial_Returns
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ X
+                   Required Value:      _ 
+                   Range of Values:     _ X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _ 
+
+    
+ACTION TAKEN
+When entering the dates into the database, the employee must ensure that the 
+date entered is a valid date. 
+_ 
+
+
+NOTES: _

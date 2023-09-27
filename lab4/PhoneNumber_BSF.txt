@@ -1,0 +1,57 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement: If a customer includes their phone number in their information, it must be unique. 
+
+Constraint: The customer's phone number field must be unique. 
+
+Type:     Database Oriented:     _ X
+          Application Oriented   _ 
+
+Category: Field Specific:        _ X
+          Relationship Specific: _ 
+
+Test On:  Insert:                _ X
+          Delete:                _ 
+          Update:                _ 
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ customer(phone_number)
+
+Table Names: _ Customers
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ X (Not Null)
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ X
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Required Value:      _ 
+                   Range of Values:     _ 
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _ 
+
+    
+ACTION TAKEN
+The ER diagram has been updated to reflect that this value must be UNIQUE.
+ As no code is written, no code was modified. However, upon initialization, these values 
+ will be declared as UNIQUE. 
+_ 
+
+
+NOTES: _
