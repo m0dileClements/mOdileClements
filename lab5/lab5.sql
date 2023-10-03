@@ -21,6 +21,7 @@ CREATE TABLE rug_origins (
     PRIMARY KEY (rug_country)
  );
 
+/*Adds all possible values for the rugs's origins into the validation table*/
 INSERT INTO rug_origins (rug_country)
     VALUES('Turkey'), ('Iran'), ('India');
 
@@ -31,6 +32,7 @@ CREATE TABLE rug_materials (
     
  );
 
+/*Adds all possible values for the rugs's materials into the validation table*/
 INSERT INTO rug_materials (rug_material)
     VALUES('Silk'), ('Wool');
 
@@ -39,7 +41,7 @@ CREATE TABLE rug_styles (
     rug_style VARCHAR(20),
      PRIMARY KEY (rug_style)
  );
-
+/*Adds all possible values for the rugs's styles into the validation table*/
  INSERT INTO rug_styles (rug_style)
     VALUES ('Agra'), ('Tabriz'), ('Ushak');
 
@@ -77,7 +79,7 @@ CREATE TABLE customer_states(
     customer_state VARCHAR (2) NOT NULL,
     PRIMARY KEY(customer_state)
  );
-
+/*Adds all possible values for the customer's state into the validation table*/
  INSERT INTO customer_states(customer_state)
     VALUES("AL"), ("AK"), ("AZ"), ("AR"), ("CA"), ("CO"), ("CT"), ("DE"), ("FL"), ("GA"), ("HI"), ("ID"), ("IL"), ("IN"), ("IA"),
           ("KS"), ("KY"), ("LA"), ("ME"), ("MD"), ("MA"), ("MI"), ("MN"), ("MS"), ("MO"), ("MT"), ("NE"), ("NV"), ("NH"), ("NJ"),
@@ -100,7 +102,7 @@ CREATE TABLE customers (
      customer_zip_code INT NOT NULL,
      /*establishing additional customer information*/
      customer_phone_number VARCHAR(20) UNIQUE,
-     customer_is_Active TINYINT DEFAULT 0
+     customer_is_Active BOOLEAN DEFAULT TRUE
  );
 
 /*Adds customers to the database*/
@@ -136,7 +138,29 @@ CREATE TABLE transactions (
     return_date DATE
  );
 
+/*Adds the customer's transactions into the database*/
 INSERT INTO transactions (customer_id, inventory_id, sale_date, price, return_date)
     VALUES ('5', '1214', '2017-12-14', '990.00', NULL),
            ('6', '1277', '2017-12-24', '2400.00', NULL),
            ('2', '1219', '2017-12-24', '40000.00', '2017-12-26');
+/*These statements create the views to check the inputted objects in the database.
+
+
+This displays the rugs that have been placed in the inventory. */
+Select inventory_id, rug_country, rug_material, rug_style, year_made, rug_length, rug_width, 
+       purchase_price, date_acquired, price_markup
+     FROM rugs;
+
+
+/*The statement below displays the rugs that have been placed in the inventory.*/
+SELECT customer_first_name, customer_last_name, customer_street_address, 
+       customer_city, customer_state, customer_zip_code, customer_phone_number
+     FROM customers; 
+
+/*Displays all of the transactions made by customers*/
+SELECT customer_first_name, customer_last_name, customer_street_address, customer_city, customer_state, customer_zip_code, 
+       inventory_id, rug_country, rug_style, rug_length, rug_width, rug_material, sale_date, purchase_price, return_date
+    FROM transactions
+    NATURAL JOIN customers
+    NATURAL JOIN rugs;
+

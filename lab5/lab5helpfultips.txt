@@ -1,0 +1,43 @@
+/*
+    SQL Reference for Lab 5 -- CSC 362 Database Systems 
+
+    Here are some useful tools when implementing your design from Lab 4:
+    1. DENY DELETION RULES using an is_active boolean field, and a view.
+       See line 18 for a boolean field, and 36-343 for the view creation syntax.
+    2. DEFAULT VALUES can be specified when defining a field. See lines 18 and
+       25 for examples. Note that the default default is NULL.
+    3. OTHER DELETION RULES which are directly supported by MariaDB include 
+       nullify and set default. MariaDB also has a rule called RESTRICT, which
+       prevents the parent from being deleted if a child is referencing it, 
+       but does not hide the parent like deny. See lines 32 and 33 for examples.
+*/
+
+CREATE TABLE styles (
+    PRIMARY KEY (style_id),
+    style_id            INT AUTO_INCREMENT,
+    style_name          VARCHAR(16) DEFAULT 'jazz'
+);
+
+CREATE TABLE entertainers (
+    PRIMARY KEY (entertainer_id),
+    entertainer_id          INT AUTO_INCREMENT,
+    entertainer_name        VARCHAR(16),
+    entertainer_is_active   BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE entertainer_styles (
+    PRIMARY KEY (entertainer_id, style_id),
+    entertainer_id      INT,
+    style_id            INT,
+    FOREIGN KEY (entertainer_id) REFERENCES entertainers (entertainer_id) ON DELETE SET NULL,
+    FOREIGN KEY (style_id) REFERENCES styles (style_id) ON DELETE SET DEFAULT
+);
+
+ -- If you are planning to implement a deny deletion rule, you may want a view.
+ -- You can create one line this:
+CREATE VIEW jazz_entertainers AS
+SELECT * 
+  FROM entertainers
+       NATURAL JOIN entertainer_styles
+       NATURAL JOIN styles
+       WHERE styles.style_name = "jazz";
