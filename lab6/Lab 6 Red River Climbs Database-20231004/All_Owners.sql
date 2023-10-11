@@ -1,0 +1,1 @@
+Select owner_name FROM owners; 

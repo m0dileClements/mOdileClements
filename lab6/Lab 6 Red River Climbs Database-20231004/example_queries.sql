@@ -94,11 +94,11 @@
 -- --        ORDER BY grade_id DESC;
 
 -- -- 8. Show the names of all routes at each difficulty level
--- SELECT grade_str, GROUP_CONCAT(climb_name)
+-- */SELECT grade_str, GROUP_CONCAT(climb_name)
 --   FROM climbs
 --        INNER JOIN climb_grades ON (climb_grade=grade_id)
 --        GROUP BY grade_str
---        ORDER BY grade_id ASC;
+--        ORDER BY grade_id ASC; /*
 
 -- -- 9. Show the number of routes at each crag. REVISE: SHOW NAMES TOO!
 -- SELECT crag_name, COUNT(*), GROUP_CONCAT(climb_name)
