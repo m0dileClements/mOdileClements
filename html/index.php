@@ -38,6 +38,6 @@
             <button type="submit">Submit</button>
         </form>
 
-        <!--<?php phpinfo(); ?>-->
+        <?php phpinfo(); ?>
     </body>
 </html>
