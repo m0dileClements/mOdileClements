@@ -3,11 +3,14 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 ?>
-<?php $dbhost = 'localhost';
-      $dbuser = 'molly';
-      $dbpass = 'dragon';
-      
-      $conn = new mysqli($dbhost, $dbuser, $dbpass);
+<?php 
+      $config = parse_ini_file('home/molly/mOdileClements/mysqli.ini');
+      $dbname = 'instrument_rentals';
+      $conn = new mysqli(
+        $config['mysqli.default_host'],
+        $config['mysqli.default_user'],
+        $config['mysqli.default_pw'],
+        $dbname);
 ?>
 
 <?php
