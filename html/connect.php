@@ -4,7 +4,7 @@
     error_reporting(E_ALL);
 ?>
 <?php 
-      $config = parse_ini_file('home/molly/mOdileClements/mysqli.ini');
+      $config = parse_ini_file('/home/molly/mOdileClements/mysqli.ini');
       $dbname = 'instrument_rentals';
       $conn = new mysqli(
         $config['mysqli.default_host'],
@@ -20,8 +20,7 @@
         echo "Error: " . $conn->connect_error . "\n";
         exit;
     } else {
-        echo "Connected Successfully!" . "<br>";
-        echo "YAY!" . "<br>";
+        echo "Connected Successfully." . "<br>";
     }
 ?>
 <?php
