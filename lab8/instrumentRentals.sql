@@ -86,4 +86,8 @@ VALUES (1,  1),
 -- INSERT INTO student_instruments (student_id, instrument_id, check_in_date)
 -- VALUES (1 , 3, '2020-10-01');
 
-    
+SELECT instrument_id, instrument_type, student_name
+    FROM student_instruments
+    RIGHT OUTER JOIN instruments USING (instrument_id)
+    LEFT OUTER JOIN students USING (student_id)
+    GROUP BY instrument_id;
