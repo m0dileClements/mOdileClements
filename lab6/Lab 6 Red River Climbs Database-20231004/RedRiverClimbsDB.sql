@@ -163,4 +163,23 @@ SOURCE MillerForkCrags.sql;
 
 -- Populate the climbs table with some routes!
 SOURCE RRGClimbs.sql;
-	
+
+ SELECT * FROM climbs
+INNER JOIN climb_grades ON (climb_grade=grade_id)
+WHERE (grade_id = 11);
+
+
+SOURCE task1.sql;
+CALL changeRouteGrade();
+
+
+SELECT * FROM climbs
+INNER JOIN climb_grades ON (climb_grade=grade_id)
+WHERE (grade_id = 12);
+SOURCE task2.sql
+
+SELECT * FROM climbs;
+
+CALL remove_pastyr_entries(find_past_year(CURRENT_TIMESTAMP));
+SELECT * FROM climbs
+INNER JOIN developed_climbs USING (climb_id);

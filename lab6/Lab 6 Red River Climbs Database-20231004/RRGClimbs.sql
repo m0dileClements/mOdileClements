@@ -40,9 +40,9 @@ INSERT INTO developed_climbs (climb_id, climber_id, developed_date)
            ( 8, 54, '2014-1-1'),
            ( 3,  2, '2013-1-1'),
            ( 6,  2, '2013-1-1'),
-           (18, 54, '2013-1-1'),
-           (18, 55, '2014-1-1');
-
+           (18, 54, '2023-1-1'),
+           (18, 55, '2023-1-1');
+-- I modified some of the prexisting dates to be testable for task 2
 INSERT INTO first_ascents (climber_id, climb_id, first_ascent_date)
     VALUES (2, 1, '2004-1-1'),
            (2, 2, '2013-1-1'),
