@@ -5,7 +5,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    $config = parse_ini_file('/home/molly/mOdileClements/mysqli.ini');
+      $config = parse_ini_file('/home/molly/mysqli.ini');
       $dbname = 'instrument_rentals';
       $conn = new mysqli(
         $config['mysqli.default_host'],
