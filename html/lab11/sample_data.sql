@@ -24,7 +24,7 @@ INSERT INTO Drones (DroneCapacityGrams, DroneCallsign, PurchaseDate, FranchiseID
 INSERT INTO Orders (FranchiseID, CustomerID, DeliveryLocationLat, DeliveryLocationLon, OrderSubmissionTime, OrderDeliveryTime)
     VALUES(1, 1, 5, 10, "2023-11-09 01:23:45", "2023-11-09 01:45:45"),
           (1, 1, 5, 10, "2023-11-12 01:23:45", "2023-11-12 01:50:45"),
-          (2, 2, 2, 3, "2023-11-28 23:47:00", "2023-10-11 01:40:45");
+          (2, 2, 2, 3, "2023-12-02 00:30:29", "2023-10-11 01:40:45");
 
 INSERT INTO OrderDishes (DishID, OrderID, DishNotes)
     VALUES(3, 1, ""),
@@ -41,10 +41,10 @@ INSERT INTO OrderDishes (DishID, OrderID, DishNotes)
 
 
 
--- SELECT OrderID, CONCAT(CustomerFirstName, ' ', CustomerLastName) AS 'Customer', GROUP_CONCAT(' ', DishName) AS 'Description', ROUND(SUM(DishPrice), 2) AS 'Price'
-    -- FROM Orders
-    -- INNER JOIN Customers USING (CustomerID)
-    -- INNER JOIN OrderDishes USING (OrderID)
-    -- INNER JOIN Dishes WHERE (Dishes.DishID = OrderDishes.DishID)
-    -- GROUP BY OrderID;
+SELECT OrderID, CONCAT(CustomerFirstName, ' ', CustomerLastName) AS 'Customer', GROUP_CONCAT(' ', DishName) AS 'Description', ROUND(SUM(DishPrice), 2) AS 'Price'
+    FROM Orders
+    INNER JOIN Customers USING (CustomerID)
+    INNER JOIN OrderDishes USING (OrderID)
+    INNER JOIN Dishes WHERE (Dishes.DishID = OrderDishes.DishID)
+    GROUP BY OrderID;
 

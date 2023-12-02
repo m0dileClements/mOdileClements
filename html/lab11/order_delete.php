@@ -19,34 +19,23 @@ if ($conn->connect_errno) {
     exit;
 };
 
-$deleted = false;
-$worked= true;
-if(isset($_POST['cancelOrderID'])) {
-    $deleted = true;
+$deleted = false; 
+    if(isset($_Post[$_POST["cancelOrderID"]])){
     $del_stmt = $conn->prepare("CALL delete_order(?)");
     $del_stmt->bind_param('i', $_POST["cancelOrderID"]);
-    if($del_stmt->execute()){
-        $del_stmt->execute();
-    } else {
-        $del_stmt->execute();
-        $worked = false;
+    $del_stmt->execute();
+    $deleted = true; 
     }
 
-}
-
-if ($deleted == true) {
-    header("Location: {$_SERVER['REQUEST_URI']}", TRUE, 303);
-    exit();
-}
-
-if ($worked = false){
-    echo 'You snooze you lose.';
-} else {
+    if ($deleted == true) {
+        header("Location: {$_SERVER['REQUEST_URI']}", TRUE, 303);
+        exit();
+    }
 ?>
 <html>
 <h2>Your order has been deleted.</h2>
 <p>Thank you!</p>
-<?php }?>
+<?php ?>
 <form action = "robotic_site.php">
     <input type = "submit" value = "Return to Home Page"/>
 </form>

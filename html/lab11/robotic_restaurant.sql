@@ -76,12 +76,16 @@ CREATE TABLE DroneAssignments(
 SOURCE sample_data.sql;
 SOURCE delete_order.sql;
 
-CALL delete_order(3);
+SOURCE add_order.sql;
 
--- SELECT OrderID, CONCAT(CustomerFirstName, ' ', CustomerLastName) AS 'Customer', GROUP_CONCAT(' ', DishName) AS 'Description', ROUND(SUM(DishPrice), 2) AS 'Price'
-    -- FROM Orders
-    -- INNER JOIN Customers USING (CustomerID)
-    -- INNER JOIN OrderDishes USING (OrderID)
-    -- INNER JOIN Dishes WHERE (Dishes.DishID = OrderDishes.DishID)
-    -- GROUP BY OrderID;
+CALL add_order(0, 2, 1, 0, "Odile Clements", "2", "4", 0);
+
+-- CALL delete_order(3);
+
+ SELECT OrderID, CONCAT(CustomerFirstName, ' ', CustomerLastName) AS 'Customer', GROUP_CONCAT(' ', DishName) AS 'Description', ROUND(SUM(DishPrice), 2) AS 'Price'
+     FROM Orders
+     INNER JOIN Customers USING (CustomerID)
+     INNER JOIN OrderDishes USING (OrderID)
+     INNER JOIN Dishes WHERE (Dishes.DishID = OrderDishes.DishID)
+     GROUP BY OrderID;
 -- SOURCE add_order.sql;

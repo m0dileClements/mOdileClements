@@ -45,6 +45,24 @@
 
         }
 
+        $custID = 0;
+        if(isset($_POST['custName'])){
+            $result = $conn->query('SELECT CONCAT(CustomerFirstName, " ", CustomerLastName), CustomerID FROM Customers');
+            for($i = 0; $i<$result->num_rows; $i++){
+                if ($result = $_POST['custName']){
+                    $custID = $result[$i][1];
+                    $names = $conn->prepare('CALL add_order(?,?,?,?,?,?,?,?)');
+                    $names->bindparam('iiiisddi',$_POST['number1'], $_POST['number2'], $_POST['number3'], $_POST['number4'], $_POST['custName'],$_POST['custLat'], $_POST['custLong'], $custID);
+                    $names->execute();
+                }
+            }
+            if($custID = 0){
+                $names = $conn->prepare('CALL add_order(?,?,?,?,?,?,?,?)');
+                $names->bindparam('iiiisddi',$_POST['number0'], $_POST['number1'], $_POST['number2'], $_POST['number3'], $_POST['custName'],$_POST['custLat'], $_POST['custLong'], $custID);
+                $names->execute();
+            }
+        }
+
         if ($deleted == true) {
             header("Location: {$_SERVER['REQUEST_URI']}", TRUE, 303);
             exit();
@@ -149,7 +167,7 @@ method = POST/>
 <?php 
 } ?>
 <h2>Cancel an Order</h2>
-<form action = "order_delete.php" method = POST>
+<form action = "robotic_site.php" method = POST>
     <table>
         <tr>
             <td>
